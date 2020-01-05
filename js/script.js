@@ -60,12 +60,26 @@ const appendPageLinks = (list) => {
          //Create container
          const paginationContainer = document.createElement('div');
          paginationContainer.className = 'pagination';
+         page.appendChild(paginationContainer);
          
          //Create unordered list inside of container
-         page.appendChild(paginationContainer);
+         const ul = document.createElement('ul');
+         paginationContainer.appendChild(ul);
+         
+         
 
-
+         const listLength = list.length / studentsPerPage;
+         for (let i = 0; i < list.length; i++) {
+            //Create list item 
+            const li = document.createElement('li');
+            ul.appendChild(li);
+            
+            //Create link tag
+            const a = document.createElement('a');
+            li.appendChild(a);
+         }
 }
+
 
 appendPageLinks();
 
