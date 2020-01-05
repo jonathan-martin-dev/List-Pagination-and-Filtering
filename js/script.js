@@ -22,10 +22,6 @@ const showPage = (list, page) => {
 //Show/hide functionality
 showPage(studentList, 1);
 
-
-
-
-
 //Appends page links to pagination   
 const appendPageLinks = (list) => {
          const page = document.querySelector('.page');
@@ -74,7 +70,29 @@ const appendPageLinks = (list) => {
             };           
          }
          //Click event on pagination link
-      
-
 
 appendPageLinks(studentList);
+
+//Create Search Bar
+const pageHeader = document.querySelector('.page-header');
+const searchContainer = document.createElement('div');
+const inputEl = document.createElement('input');
+const searchButton = document.createElement('button');
+
+//Append to DOM
+searchContainer.className = 'student-search';
+inputEl.type = "text";
+inputEl.setAttribute('placeholder', 'Search for students...');
+searchContainer.appendChild(inputEl);
+//Search Button
+searchButton.textContent = 'Search';
+searchContainer.appendChild(searchButton);
+pageHeader.insertBefore(searchContainer, pageHeader.childNodes[3]);
+
+//Search Function
+// const search = (list, num) => {
+//    console.log(list);
+//    console.log(num);
+
+// }
+
