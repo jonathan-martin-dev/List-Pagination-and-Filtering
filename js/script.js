@@ -40,7 +40,7 @@ const appendPageLinks = (list) => {
          
          
          //Number of list items that should be generated
-         const listLength = list.length / studentsPerPage;
+         const listLength = list.length / studentsPerPage + 1;
          for (let i = 1; i < listLength; i++) {
             //Create list items 
             const li = document.createElement('li');
@@ -55,23 +55,26 @@ const appendPageLinks = (list) => {
                if (i === 1) {
                   a.className = 'active';
                }
+
+               //Event handler for clicking pagination links.
                a.addEventListener('click',(e) => {
                   const pageClicked = e.target;
+                  const pageNumber = a.textContent;
                   const links = document.getElementsByTagName('A');
-                  console.log(links);
-                  for(let j = 1; j < listLength; j++) {
+                  
+                  //Loop through a elements and remove active class except for event target
+                  for(let j = 0; j < links.length; j++) {
                     links[j].classList.remove('active');
                   }
                   pageClicked.classList.add('active');
+
+                  //On page clicked students are shown
+                  showPage(studentList, pageNumber);
                });
+            };           
          }
          //Click event on pagination link
-         
-}
+      
 
 
 appendPageLinks(studentList);
-
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
