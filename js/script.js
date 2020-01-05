@@ -59,8 +59,8 @@ const appendPageLinks = (list) => {
                   const pageClicked = e.target;
                   const links = document.getElementsByTagName('A');
                   console.log(links);
-                  for(let i = 1; i < listLength; i++) {
-                    links[i].classList.remove('active');
+                  for(let j = 1; j < listLength; j++) {
+                    links[j].classList.remove('active');
                   }
                   pageClicked.classList.add('active');
                });
