@@ -16,7 +16,7 @@ FSJS project 2 - List Filter and Pagination
    scoped to that function.
 ***/
 const studentList = document.getElementsByClassName('student-item');
-const studentPerPage = 10;
+const studentsPerPage = 10;
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
@@ -32,27 +32,20 @@ const studentPerPage = 10;
        "invoke" the function 
 ***/
 //Loop through all students and only show 10 at a time
-const showPage = (studentList, page) => {
-   //I need to find a way to dynamically get 10 of each item and base it on page selected
-   for (let i = 0; i < studentList.length; i++) {
-      //If there were thousands of students this solution would not work.
-      // if (page === 1) {
-      //    if (i >= 0 && i <= 10) {
-      //       studentList[i].style.display = '';
-      //    } else {
-      //       studentList[i].style.display = 'none';
-      //    }
-      //  } else if (page === 2) {
-      //    if (i >= 11 && i <= 20) {
-      //       studentList[i].style.display = '';
-      //    } else {
-      //       studentList[i].style.display = 'none';
-      //    }
-      //  }
+const showPage = (list, page) => {
+   const startIndex = (page * studentsPerPage) - studentsPerPage;
+   const endIndex = (page * studentsPerPage);
+   for (let i = 0; i < list.length; i++) {
+     if (i >= startIndex && i <= endIndex) {
+        list[i].style.display = '';
+     } else {
+        list[i].style.display = 'none';
+     }
    }
 }
 
-console.log(showPage(studentList, 1));
+//Testing show/hide functionality
+console.log(showPage(studentList, 3));
 
 
 
@@ -61,10 +54,20 @@ console.log(showPage(studentList, 1));
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
+   
 const appendPageLinks = (list) => {
+         const page = document.querySelector('.page');
+         //Create container
+         const paginationContainer = document.createElement('div');
+         paginationContainer.className = 'pagination';
+         
+         //Create unordered list inside of container
+         page.appendChild(paginationContainer);
+
 
 }
 
+appendPageLinks();
 
 
 
