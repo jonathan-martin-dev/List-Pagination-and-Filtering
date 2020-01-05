@@ -5,20 +5,7 @@ FSJS project 2 - List Filter and Pagination
 
 const studentList = document.getElementsByClassName('student-item');
 const studentsPerPage = 10;
-/*** 
-   Create the `showPage` function to hide all of the items in the 
-   list except for the ten you want to show.
 
-   Pro Tips: 
-     - Keep in mind that with a list of 54 students, the last page 
-       will only display four.
-     - Remember that the first student has an index of 0.
-     - Remember that a function `parameter` goes in the parens when 
-       you initially define the function, and it acts as a variable 
-       or a placeholder to represent the actual function `argument` 
-       that will be passed into the parens later when you call or 
-       "invoke" the function 
-***/
 //Loop through all students and only show 10 at a time
 const showPage = (list, page) => {
    const startIndex = (page * studentsPerPage) - studentsPerPage;
@@ -32,8 +19,8 @@ const showPage = (list, page) => {
    }
 }
 
-//Testing show/hide functionality
-console.log(showPage(studentList, 1));
+//Show/hide functionality
+showPage(studentList, 1);
 
 
 
@@ -59,18 +46,27 @@ const appendPageLinks = (list) => {
             const li = document.createElement('li');
             ul.appendChild(li);
             
-            //Create link tags
-            const a = document.createElement('a');
-            
+            //Create pagination link tags
+            const a = document.createElement('a');      
             a.setAttribute('href', '#');
-           
             a.textContent = i;
             li.appendChild(a);
-
-            a.addEventListener('click',() => {
-
-            });
+               //Set active class on pagination link
+               if (i === 1) {
+                  a.className = 'active';
+               }
+               a.addEventListener('click',(e) => {
+                  const pageClicked = e.target;
+                  const links = document.getElementsByTagName('A');
+                  console.log(links);
+                  for(let i = 1; i < listLength; i++) {
+                    links[i].classList.remove('active');
+                  }
+                  pageClicked.classList.add('active');
+               });
          }
+         //Click event on pagination link
+         
 }
 
 
