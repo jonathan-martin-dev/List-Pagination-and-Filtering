@@ -17,7 +17,7 @@ const showPage = (list, page) => {
         list[i].style.display = 'none';
      }
    }
-}
+};
 
 //Show/hide functionality
 showPage(studentList, 1);
@@ -68,7 +68,7 @@ const appendPageLinks = (list) => {
                   showPage(studentList, pageNumber);
                });
             };           
-         }
+         };
          //Click event on pagination link
 
 appendPageLinks(studentList);
@@ -89,10 +89,25 @@ searchButton.textContent = 'Search';
 searchContainer.appendChild(searchButton);
 pageHeader.insertBefore(searchContainer, pageHeader.childNodes[3]);
 
-//Search Function
-// const search = (list, num) => {
-//    console.log(list);
-//    console.log(num);
+// Search Function
+const conductSearch = (searchInput, studentNames) => {
+   const results = [];
+   
+   console.log(searchInput);
+   console.log(searchInput.value.length);
+   for (let i = 0; i < searchInput.length; i++) {
+      searchInput[i].classList.remove('match');
+      if (searchInput.value.length === 0 && studentNames[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
+         searchInput[i].classList.add('match');
+      }  
+   }
+   console.log(results);
+};
+   
+searchButton.addEventListener('click', (e) => {
+   conductSearch(inputEl, studentList);
+});
 
-// }
-
+inputEl.addEventListener('keyup', (e) => {
+   conductSearch(inputEl, studentList);
+});
