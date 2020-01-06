@@ -9,9 +9,9 @@ const studentsPerPage = 10;
 //Loop through all students and only show 10 at a time
 const showPage = (list, page) => {
    const startIndex = (page * studentsPerPage) - studentsPerPage;
-   const endIndex = (page * studentsPerPage);
+   const endIndex = page * studentsPerPage;
    for (let i = 0; i < list.length; i++) {
-     if (i >= startIndex && i <= endIndex) {
+     if (i >= startIndex && i < endIndex) {
         list[i].style.display = '';
      } else {
         list[i].style.display = 'none';
@@ -36,7 +36,7 @@ const appendPageLinks = (list) => {
          
          
          //Number of list items that should be generated
-         const listLength = list.length / studentsPerPage + 1;
+         const listLength = Math.ceil(list.length / studentsPerPage) + 1;
          for (let i = 1; i < listLength; i++) {
             //Create list items 
             const li = document.createElement('li');
