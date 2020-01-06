@@ -95,10 +95,11 @@ const conductSearch = (searchInput, studentNames) => {
    
    console.log(searchInput);
    console.log(searchInput.value.length);
-   for (let i = 0; i < searchInput.length; i++) {
-      searchInput[i].classList.remove('match');
-      if (searchInput.value.length === 0 && studentNames[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
-         searchInput[i].classList.add('match');
+   for (let i = 0; i < studentNames.length; i++) {
+      studentNames[i].style.display = 'none';
+      if (searchInput.value.length !== 0 && studentNames[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
+         studentNames[i].style.display = '';
+         results.push(studentNames[i]);
       }  
    }
    console.log(results);
