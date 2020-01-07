@@ -92,23 +92,20 @@ pageHeader.insertBefore(searchContainer, pageHeader.childNodes[3]);
 // Search Function
 const conductSearch = (searchInput, studentNames) => {
    const results = [];
-   
-   console.log(searchInput);
-   console.log(searchInput.value.length);
    for (let i = 0; i < studentNames.length; i++) {
       studentNames[i].style.display = 'none';
       if (searchInput.value.length !== 0 && studentNames[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
          studentNames[i].style.display = '';
          results.push(studentNames[i]);
-      }  
-   }
-   console.log(results);
-};
+         }  
+      }
+      console.log(results);
+   };
    
-searchButton.addEventListener('click', (e) => {
+searchButton.addEventListener('click', () => {
    conductSearch(inputEl, studentList);
 });
 
-inputEl.addEventListener('keyup', (e) => {
+inputEl.addEventListener('keyup', () => {
    conductSearch(inputEl, studentList);
 });
