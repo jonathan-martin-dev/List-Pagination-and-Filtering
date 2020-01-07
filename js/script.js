@@ -84,12 +84,13 @@ searchContainer.className = 'student-search';
 inputEl.type = "text";
 inputEl.setAttribute('placeholder', 'Search for students...');
 searchContainer.appendChild(inputEl);
+
 //Search Button
 searchButton.textContent = 'Search';
 searchContainer.appendChild(searchButton);
 pageHeader.insertBefore(searchContainer, pageHeader.childNodes[3]);
 
-// Search Function
+//Search Function
 const conductSearch = (searchInput, studentNames) => {
    const results = [];
    for (let i = 0; i < studentNames.length; i++) {
@@ -101,15 +102,43 @@ const conductSearch = (searchInput, studentNames) => {
       }
      return results;
    };
-   
-searchButton.addEventListener('click', () => {
+
+
+//Create Message Container
+const studentListDiv = document.querySelector('.student-list');
+const message = document.createElement('p');
+message.classList.add('message');
+message.textContent = 'There are no results';
+message.style.fontSize = '3em';
+message.style.textAlign = 'center';
+message.style.padding = '40px';
+
+//Remove pagination links
+const removePaginationLinks = () => {
+   const removePageLinks = document.querySelector('.pagination');
+   removePageLinks.remove();
+}
+
+const searchResults = () => {
    const results = conductSearch(inputEl, studentList);
+   removePaginationLinks();
    showPage(results, 1);
    appendPageLinks(results);
+   if (results.length === 0) {
+      studentListDiv.appendChild(message); 
+      message.style.display = '';
+   } else {
+      message.style.display = 'none';
+   }
+}
+
+//Search Button Event
+searchButton.addEventListener('click', () => {
+   searchResults();
 });
 
+//Input Value Event
 inputEl.addEventListener('keyup', () => {
-   const results = conductSearch(inputEl, studentList);
-   showPage(results, 1);
-   appendPageLinks(results);
+   searchResults();
 });
+
