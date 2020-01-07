@@ -69,7 +69,7 @@ const appendPageLinks = (list) => {
                });
             };           
          };
-         //Click event on pagination link
+         
 
 appendPageLinks(studentList);
 
@@ -119,6 +119,7 @@ const removePaginationLinks = () => {
    removePageLinks.remove();
 }
 
+//Get Search Results
 const searchResults = () => {
    const results = conductSearch(inputEl, studentList);
    removePaginationLinks();
