@@ -99,13 +99,17 @@ const conductSearch = (searchInput, studentNames) => {
          results.push(studentNames[i]);
          }  
       }
-      console.log(results);
+     return results;
    };
    
 searchButton.addEventListener('click', () => {
-   conductSearch(inputEl, studentList);
+   const results = conductSearch(inputEl, studentList);
+   showPage(results, 1);
+   appendPageLinks(results);
 });
 
 inputEl.addEventListener('keyup', () => {
-   conductSearch(inputEl, studentList);
+   const results = conductSearch(inputEl, studentList);
+   showPage(results, 1);
+   appendPageLinks(results);
 });
