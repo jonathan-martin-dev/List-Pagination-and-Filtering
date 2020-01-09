@@ -94,7 +94,6 @@ const conductSearch = (searchInput, studentNames) => {
         .toLowerCase()
         .includes(searchInput.value.toLowerCase())
     ) {
-      console.log();
       studentNames[i].style.display = "";
       results.push(studentNames[i]);
     }
