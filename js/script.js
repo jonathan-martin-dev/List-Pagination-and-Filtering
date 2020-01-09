@@ -95,10 +95,11 @@ const conductSearch = (searchInput, studentNames) => {
     studentNames[i].style.display = "none";
     if (
       searchInput.value.length !== 0 &&
-      studentNames[i].textContent
+      studentNames[i].childNodes[1].children[1].textContent
         .toLowerCase()
         .includes(searchInput.value.toLowerCase())
     ) {
+      console.log();
       studentNames[i].style.display = "";
       results.push(studentNames[i]);
     }
