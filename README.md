@@ -2,7 +2,7 @@
  
  This application allows users to search for students through a static list. It uses pagination to seperate the amount of students in the given list by 10 students per page. Depending on the search terms the pagination will change.
  
- <em>Example: Typing the letter "m" will show 2 pages worth of students with the letter m in their name.</em>
+ <em>Example: Typing the letter "m" into the search will show 2 pages worth of students with the letter m in their name.</em>
  
  <strong>This project demonstrates knowledge of Vanilla JavaScript and uses methods like:</strong>
 
